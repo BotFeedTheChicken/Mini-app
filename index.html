@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Loading</title>
 
 <style>
 html, body {
     margin: 0;
-    padding: 0;
     width: 100%;
     height: 100%;
-    background: #0b0b0b;
+    background: #151515; /* ФОН КАК НА ФОТО */
     font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    overflow: hidden;
     color: #fff;
 }
 
@@ -26,9 +24,9 @@ html, body {
 /* ===== CENTER ===== */
 .center {
     position: absolute;
-    top: 50%;
+    top: 52%;
     left: 50%;
-    transform: translate(-50%, -58%);
+    transform: translate(-50%, -60%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,70 +34,69 @@ html, body {
 
 /* LOGO */
 .logo {
-    width: 86px;
-    height: 86px;
-    background: #ffffff;
+    width: 88px;
+    height: 88px;
+    background: #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 14px;
+    margin-bottom: 22px;
 }
 
 .logo svg {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     fill: #000;
 }
 
-/* PROGRESS BAR — НЕ ТРОГАЕМ */
+/* ===== PROGRESS BAR — КАК В TELEGRAM ===== */
 .progress {
-    width: 168px;
-    height: 8px;
-    background: rgba(255,255,255,0.18);
-    border-radius: 6px;
+    width: 190px;
+    height: 12px;                 /* ТОЛЩЕ */
+    background: #2a2a2a;
+    border-radius: 10px;
     overflow: hidden;
 }
 
 .progress-fill {
     height: 100%;
     width: 0%;
-    background: rgba(255,255,255,0.75);
-    border-radius: 6px;
+    background: #e5e5e5;          /* ЦВЕТ КАК НА ФОТО */
+    border-radius: 10px;
     transition: width 0.12s linear;
 }
 
-/* ===== BOTTOM (18+ ВОЗВРАЩЁН) ===== */
+/* ===== BOTTOM ===== */
 .bottom {
     position: absolute;
-    bottom: 26px;
+    bottom: 28px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    font-size: 13px;
-    opacity: 0.55;
-    line-height: 1.4;
+    font-size: 14px;
+    opacity: 0.5;
 }
 
 .bottom .age {
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 .bottom a {
     color: #fff;
     text-decoration: underline;
-    opacity: 0.55;
+    opacity: 0.5;
 }
 </style>
 </head>
-<body>
 
+<body>
 <div class="screen">
 
     <div class="center">
         <div class="logo">
             <svg viewBox="0 0 24 24">
-                <path d="M12 2L4.5 6.5v11L12 22l7.5-4.5v-11L12 2zm0 2.2l5.5 3.3v7.9L12 18.8l-5.5-3.4V7.5L12 4.2zm-1 3.1v9.3l-2.8-1.6V9l2.8-1.7zm2 0L15.8 9v6l-2.8 1.6V7.3z"/>
+                <path d="M12 2L5 6v12l7 4 7-4V6l-7-4zm0 2.3L17 7v10l-5 2.9L7 17V7l5-2.7z"/>
             </svg>
         </div>
 
@@ -111,7 +108,7 @@ html, body {
     <div class="bottom">
         <div class="age">18+</div>
         <a href="https://kdrer.cocal.ru/privacy" target="_blank">
-            Политика конфиденциальности
+            Условия использования
         </a>
     </div>
 
@@ -122,14 +119,13 @@ let p = 0;
 const bar = document.getElementById('progress');
 
 const timer = setInterval(() => {
-    p += Math.random() * 14 + 8;
+    p += Math.random() * 12 + 6;
     if (p >= 100) {
         p = 100;
         clearInterval(timer);
     }
     bar.style.width = p + '%';
-}, 160);
+}, 140);
 </script>
-
 </body>
 </html>
