@@ -6,86 +6,90 @@
 <title>Loading</title>
 
 <style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        background: #0b0b0b;
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
-        color: #fff;
-        overflow: hidden;
-    }
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #0b0b0b;
+    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    overflow: hidden;
+    color: #fff;
+}
 
-    .screen {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
+.screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 
-    /* ===== CENTER ===== */
-    .center {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -55%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-    }
+/* ===== CENTER ===== */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -58%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    /* LOGO */
-    .logo {
-        width: 86px;
-        height: 86px;
-        background: #ffffff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+/* LOGO */
+.logo {
+    width: 86px;
+    height: 86px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+}
 
-    .logo svg {
-        width: 42px;
-        height: 42px;
-        fill: #000;
-    }
+.logo svg {
+    width: 42px;
+    height: 42px;
+    fill: #000;
+}
 
-    /* PROGRESS BAR */
-    .progress {
-        width: 160px;
-        height: 6px;
-        background: rgba(255,255,255,0.15);
-        border-radius: 4px;
-        overflow: hidden;
-    }
+/* PROGRESS BAR — НЕ ТРОГАЕМ */
+.progress {
+    width: 168px;
+    height: 8px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 6px;
+    overflow: hidden;
+}
 
-    .progress-fill {
-        height: 100%;
-        width: 0%;
-        background: #ffffff;
-        border-radius: 4px;
-        transition: width 0.15s linear;
-    }
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: rgba(255,255,255,0.75);
+    border-radius: 6px;
+    transition: width 0.12s linear;
+}
 
-    /* ===== BOTTOM TEXT ===== */
-    .bottom {
-        position: absolute;
-        bottom: 26px;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        opacity: 0.7;
-        font-size: 13px;
-        line-height: 1.4;
-    }
+/* ===== BOTTOM (18+ ВОЗВРАЩЁН) ===== */
+.bottom {
+    position: absolute;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.55;
+    line-height: 1.4;
+}
 
-    .bottom a {
-        color: #ffffff;
-        text-decoration: underline;
-        opacity: 0.7;
-    }
+.bottom .age {
+    margin-bottom: 4px;
+}
+
+.bottom a {
+    color: #fff;
+    text-decoration: underline;
+    opacity: 0.55;
+}
 </style>
 </head>
 <body>
@@ -94,7 +98,6 @@
 
     <div class="center">
         <div class="logo">
-            <!-- ЛОГО -->
             <svg viewBox="0 0 24 24">
                 <path d="M12 2L4.5 6.5v11L12 22l7.5-4.5v-11L12 2zm0 2.2l5.5 3.3v7.9L12 18.8l-5.5-3.4V7.5L12 4.2zm-1 3.1v9.3l-2.8-1.6V9l2.8-1.7zm2 0L15.8 9v6l-2.8 1.6V7.3z"/>
             </svg>
@@ -106,7 +109,7 @@
     </div>
 
     <div class="bottom">
-        <div>18+</div>
+        <div class="age">18+</div>
         <a href="https://kdrer.cocal.ru/privacy" target="_blank">
             Политика конфиденциальности
         </a>
@@ -115,18 +118,17 @@
 </div>
 
 <script>
-    let progress = 0;
-    const bar = document.getElementById('progress');
+let p = 0;
+const bar = document.getElementById('progress');
 
-    const interval = setInterval(() => {
-        progress += Math.random() * 18 + 10; // быстрее
-        if (progress >= 100) {
-            progress = 100;
-            clearInterval(interval);
-            // тут потом открытие основного экрана
-        }
-        bar.style.width = progress + '%';
-    }, 180); // быстрее
+const timer = setInterval(() => {
+    p += Math.random() * 14 + 8;
+    if (p >= 100) {
+        p = 100;
+        clearInterval(timer);
+    }
+    bar.style.width = p + '%';
+}, 160);
 </script>
 
 </body>
